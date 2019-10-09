@@ -1,9 +1,11 @@
 package com.unmeshc.security.domain;
 
 
+import com.unmeshc.security.validators.ValidEmail;
 import lombok.*;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.util.Objects;
 import java.util.Set;
 
@@ -23,14 +25,22 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+
+    @NotBlank
     private String firstName;
+
+    @NotBlank
     private String lastName;
 
+    @NotBlank
+    @ValidEmail
     @Column(unique = true)
     private String email;
 
+    @NotBlank
     @Column(length = 60)
     private String password;
+
     private Boolean active = false;
 
     @ManyToMany
