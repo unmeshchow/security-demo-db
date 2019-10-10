@@ -48,7 +48,7 @@ public class LoginController {
 
         userService.saveUser(user);
 
-        model.addAttribute("success", "User has been registered successfully");
+        model.addAttribute("successMessage", "User has been registered successfully");
         model.addAttribute("user", User.builder().build());
 
         return "registration";
@@ -58,7 +58,7 @@ public class LoginController {
     public String home(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         User user = userService.findUserByEmail(authentication.getName());
-        model.addAttribute("username", "Welcome " + user.getFirstName() + " " +
+        model.addAttribute("welcomeMessage", "Welcome " + user.getFirstName() + " " +
                 user.getLastName());
         model.addAttribute("adminMessage",
                 "Content is only available for users with ADMIN role");
