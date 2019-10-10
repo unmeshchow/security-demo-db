@@ -11,8 +11,13 @@
     <div sec:authorize="isAuthenticated()">
         <span th:text="${welcomeMessage}">welcome</span>
     </div>
+    <br>
     <div sec:authorize="hasRole('ADMIN')">
         <span th:text="${adminMessage}">admin</span>
     </div>
+    <br>
+    <form th:action="@{/logout}" method="post">
+        <button type="submit">Logout</button>
+    </form>
 </body>
 </html>
